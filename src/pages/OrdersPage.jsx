@@ -1,13 +1,14 @@
 // OrdersPage.jsx
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   ShoppingBag, 
   User, 
   DollarSign, 
-  ChevronDown,
   Package,
-  Calendar
+  Calendar,
+  Eye
 } from 'lucide-react';
 import API from '../services/api';
 
@@ -70,13 +71,11 @@ const OrdersPage = () => {
       animate={{ opacity: 1, y: 0 }}
       className="min-h-screen bg-gray-900 p-6"
     >
-      {/* Header */}
       <div className="flex items-center gap-3 mb-8">
         <ShoppingBag className="w-8 h-8 text-indigo-400" />
         <h1 className="text-3xl md:text-4xl font-light text-white">Orders</h1>
       </div>
 
-      {/* Orders Table */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -84,7 +83,7 @@ const OrdersPage = () => {
         className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden"
       >
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[1000px]">
             <thead>
               <tr className="bg-gray-700/50 border-b border-gray-700">
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Order ID</th>
@@ -92,6 +91,7 @@ const OrdersPage = () => {
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Date</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Total</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Status</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Update Status</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
@@ -139,6 +139,15 @@ const OrdersPage = () => {
                       <option value="Delivered">Delivered</option>
                       <option value="Cancelled">Cancelled</option>
                     </select>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <Link
+                      to={`/admin/orders/${order._id}`}
+                      className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors"
+                    >
+                      <Eye className="w-5 h-5" />
+                      View
+                    </Link>
                   </td>
                 </motion.tr>
               ))}

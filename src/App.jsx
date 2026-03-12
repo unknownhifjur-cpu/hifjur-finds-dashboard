@@ -10,6 +10,7 @@ import AddProductPage from './pages/AddProductPage';
 import EditProductPage from './pages/EditProductPage';
 import OrdersPage from './pages/OrdersPage';
 import UsersPage from './pages/UsersPage';
+import AddProductPage from './pages/AddProductPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="products/edit/:id" element={<EditProductPage />} />
             <Route path="orders" element={<OrdersPage />} />
             <Route path="users" element={<UsersPage />} />
+            <Route path="/admin/orders/:id" element={<AdminOrderDetailPage />} />
           </Route>
         </Routes>
       </AuthProvider>
