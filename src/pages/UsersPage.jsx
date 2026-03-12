@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, User, Mail, Shield } from 'lucide-react';
+import { Users, User, Mail, Shield, MapPin } from 'lucide-react';
 import API from '../services/api';
 
 const UsersPage = () => {
@@ -51,13 +51,16 @@ const UsersPage = () => {
         className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden"
       >
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[800px]">
             <thead>
               <tr className="bg-gray-700/50 border-b border-gray-700">
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">ID</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Name</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Email</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Role</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Address</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">City</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">Pincode</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-700">
@@ -93,6 +96,18 @@ const UsersPage = () => {
                         {user.role}
                       </span>
                     </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <MapPin className="w-4 h-4 text-gray-400" />
+                      {user.address || 'N/A'}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-300">
+                    {user.city || 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-300">
+                    {user.pincode || 'N/A'}
                   </td>
                 </motion.tr>
               ))}
