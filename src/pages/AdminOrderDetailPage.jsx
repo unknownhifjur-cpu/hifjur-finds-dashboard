@@ -25,7 +25,8 @@ const AdminOrderDetailPage = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const { data } = await API.get(`/orders/${id}`);
+        // Use admin endpoint (matches backend route)
+        const { data } = await API.get(`/admin/orders/${id}`);
         setOrder(data);
       } catch (error) {
         console.error(error);
@@ -57,7 +58,7 @@ const AdminOrderDetailPage = () => {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-gray-900 pt-24 pb-12">
+      <div className="min-h-screen bg-gray-900 p-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-400">Order not found.</p>
           <Link to="/admin/orders" className="text-indigo-400 hover:text-indigo-300 mt-4 inline-block">
