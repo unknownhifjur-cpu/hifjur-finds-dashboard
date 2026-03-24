@@ -11,6 +11,8 @@ import EditProductPage from "./pages/EditProductPage";
 import OrdersPage from "./pages/OrdersPage";
 import UsersPage from "./pages/UsersPage";
 import AdminOrderDetailPage from "./pages/AdminOrderDetailPage";
+import ReferralsPage from "./pages/ReferralsPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
 
 function App() {
   return (
@@ -20,7 +22,6 @@ function App() {
           <Route path="/" element={<Navigate to="/admin/login" replace />} />
           <Route path="/admin/login" element={<LoginPage />} />
           <Route path="/admin/register" element={<RegisterPage />} />
-          \n{" "}
           <Route
             path="/admin"
             element={
@@ -35,10 +36,9 @@ function App() {
             <Route path="products/edit/:id" element={<EditProductPage />} />
             <Route path="orders" element={<OrdersPage />} />
             <Route path="users" element={<UsersPage />} />
-            <Route
-              path="/admin/orders/:id"
-              element={<AdminOrderDetailPage />}
-            />
+            <Route path="orders/:id" element={<AdminOrderDetailPage />} />
+            <Route path="referrals" element={<ReferralsPage />} />
+            <Route path="analytics" element={<AnalyticsPage />} />
           </Route>
         </Routes>
       </AuthProvider>

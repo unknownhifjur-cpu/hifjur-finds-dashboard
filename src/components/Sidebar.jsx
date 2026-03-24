@@ -9,7 +9,9 @@ import {
   Users, 
   LogOut,
   Menu,
-  X
+  X,
+  Ticket,        // for Referrals
+  BarChart3       // for Analytics
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -22,6 +24,8 @@ const Sidebar = ({ isOpen, onClose }) => {
     { path: '/admin/products', label: 'Products', icon: Package },
     { path: '/admin/orders', label: 'Orders', icon: ShoppingBag },
     { path: '/admin/users', label: 'Users', icon: Users },
+    { path: '/admin/referrals', label: 'Referrals', icon: Ticket },
+    { path: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
   ];
 
   const sidebarContent = (
